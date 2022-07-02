@@ -3,13 +3,16 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/rpg_api');
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 require('dotenv').config();
-
-const DB = mongoose.connection;
-DB.on('error', () => console.log("DB Connection Failed!"));
-DB.once('open', () => console.log('DB Connected!'));
-
+mongoose
+    .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then( () => console.log("Successfully connected to mongodb"))
+    .catch(e => console.log(e));
+    
 app.get('/', (req, res) => {
     return res.json({'message':'Hello, World!'});
 });
