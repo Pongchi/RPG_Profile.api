@@ -9,6 +9,7 @@
 > 모든 저장/삭제 등등을 NoSQL인 MongoDB를 사용하려고 했지만, 
 > 공부를 하면서 생각을 해보니 MongoDB만 쓰기에는 좋지 않은 단점이 있다는 것일 깨닫고.. MySQL도 혼합해서 쓰기로 결정!
 
+> 요즘 Rogulike TRPG 하는데, 재밌어서 그 쪽 방향으로 API를 만들 계획.
 ---
 
 # 계획
@@ -20,7 +21,6 @@
 ## User
 * id와 password를 이용해 회원가입.
 * 로그인시 JWT 토큰 발급
-* 유저는 최대 2개의 캐릭터를 가질 수 있음
 
 ### 유저 회원가입
 #### Path : api/auth/create
@@ -59,18 +59,4 @@
 ---
 
 ## 캐릭터
-* 캐릭터 이름, 레벨, 칭호, 스텟, 아이템, 장착 아이템, 소지금
-
-### 캐릭터 생성
-#### Path: api/character/create
-#### Request Header
-* x-access-token : api/auth/login 에서 발급받은 JWT 토큰
-#### Request Parameter
-* nickname : 닉네임
-* class_type : 직업 고유번호 (정수형)
-* class_name : 직업 이름
-* stat : JSON형태 { stat_name : value, ... }
-#### Response
-* success : true 또는 false
-* error : 에러메시지. 없으면 null
-* data : 캐릭터 정보를 JSON 형태로 반환.
+* 조만간 다시 계획할 예정. 이유는 TRPG..
